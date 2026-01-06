@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>FinSight 2.0 - Local Finance Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta name="theme-color" content="#1E2B58">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <style>
+        :root {
+          --primary: #1E2B58;
+          --secondary: #C59D5F;
+          --accent: #4AA3A3;
+        }
+
+        body { 
+          font-family: 'Open Sans', sans-serif; 
+          -webkit-tap-highlight-color: transparent; 
+          background: #121212; /* Dark Mode Background */
+        }
+
+        h1, h2, h3, h4, .font-display {
+          font-family: 'Montserrat', sans-serif;
+        }
+
+        .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
+        .safe-top { padding-top: env(safe-area-inset-top); }
+        
+        /* Brand Animated Background */
+        .bg-mesh {
+          position: fixed;
+          top: 0; left: 0; right: 0; bottom: 0;
+          z-index: -1;
+          background-color: #121212;
+          background-image: 
+            radial-gradient(at 0% 0%, hsla(226,49%,15%,1) 0, transparent 50%), 
+            radial-gradient(at 100% 0%, hsla(180,38%,20%,1) 0, transparent 50%), 
+            radial-gradient(at 50% 100%, hsla(37,45%,10%,1) 0, transparent 50%);
+          overflow: hidden;
+        }
+
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background-color: rgba(74, 163, 163, 0.3);
+          border-radius: 20px;
+        }
+
+        /* Standard 16px Radius from Brand Kit */
+        .brand-radius { border-radius: 16px; }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "recharts": "https://esm.sh/recharts@^3.6.0",
+    "zustand/": "https://esm.sh/zustand@^5.0.9/",
+    "zustand": "https://esm.sh/zustand@^5.0.9"
+  }
+}
+</script>
+</head>
+<body class="text-slate-100 antialiased overflow-x-hidden selection:bg-[#4AA3A3] selection:text-white">
+    <div class="bg-mesh"></div>
+    <div id="root"></div>
+</body>
+</html>
