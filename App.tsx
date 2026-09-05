@@ -42,7 +42,7 @@ const App: React.FC = () => {
                   <input
                     type="number"
                     value={monthlyIncome}
-                    onChange={(e) => setMonthlyIncome(Number(e.target.value))}
+                    onChange={(e) => setMonthlyIncome(Number(e.target.value) || 0)}
                     className="bg-black/40 border border-white/10 px-6 py-3 rounded-xl w-36 text-right font-black text-2xl text-[#4AA3A3] focus:border-[#4AA3A3] outline-none transition-all font-mono"
                   />
                 </div>
@@ -71,7 +71,7 @@ const App: React.FC = () => {
                     >
                       <div className="flex items-center gap-4">
                         <RefreshCw className="w-6 h-6 text-[#4AA3A3] group-hover:rotate-180 transition-transform duration-700" />
-                        <span className="font-bold text-lg">Encrypted Sync Hub</span>
+                        <span className="font-bold text-lg">Local Sync Hub</span>
                       </div>
                       <span className="text-[10px] font-black uppercase tracking-widest text-slate-500">Access Console</span>
                     </button>
@@ -79,7 +79,7 @@ const App: React.FC = () => {
                     <div className="p-6 bg-[#4AA3A3]/5 border border-[#4AA3A3]/10 rounded-xl flex items-start gap-4 shadow-inner">
                       <Shield className="w-6 h-6 text-[#4AA3A3] shrink-0 mt-1" />
                       <p className="text-sm text-slate-400 leading-relaxed">
-                        FinSight prioritizes <span className="text-white font-bold italic">Local-First</span> privacy. Your financial map is etched into this browser's secure cache. <strong>Always archive a physical backup via Sync Hub.</strong>
+                        FinSight prioritizes <span className="text-white font-bold italic">Local-First</span> privacy. Your financial data is stored in this browser's local storage (unencrypted). <strong>Always archive a backup via Sync Hub and keep it somewhere safe.</strong>
                       </p>
                     </div>
                   </div>

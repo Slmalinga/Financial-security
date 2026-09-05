@@ -156,7 +156,7 @@ export const Dashboard: React.FC = () => {
                     <div 
                       className="h-full rounded-full transition-all duration-700"
                       style={{ 
-                        width: `${(item.value / stats.totalSpent) * 100}%`,
+                        width: `${stats.totalSpent > 0 ? (item.value / stats.totalSpent) * 100 : 0}%`,
                         backgroundColor: item.type === 'Need' ? '#1E2B58' : item.type === 'Want' ? '#C59D5F' : '#4AA3A3'
                       }}
                     />

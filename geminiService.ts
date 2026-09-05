@@ -1,10 +1,19 @@
 import { GoogleGenAI } from "@google/genai";
 import { Transaction } from "./types";
 
-// Always initialize GoogleGenAI exclusively with process.env.API_KEY as per the world-class guidelines.
+// SECURITY WARNING: This calls the Gemini API directly from the browser, which
+// requires the API key to be present in the client bundle (see vite.config.ts).
+// Any user can extract that key from the shipped JavaScript. Before production,
+// move these calls behind a server-side proxy that holds GEMINI_API_KEY and
+// forwards requests, so the key never reaches the client.
 export const getFinancialAdvice = async (transactions: Transaction[], income: number) => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-  
+  const apiKey = process.env.API_KEY;
+  if (!apiKey) {
+    return "AI insights are unavailable: the AI service is not configured.";
+  }
+
+  const ai = new GoogleGenAI({ apiKey });
+
   const summary = transactions.reduce((acc, t) => {
     if (t.type !== 'Income') {
       acc[t.type] = (acc[t.type] || 0) + t.amount;

@@ -44,7 +44,7 @@ export const SyncModule: React.FC = () => {
       setStatus({ type: 'success', msg: 'Tactical data restored successfully!' });
       setImportText('');
     } else {
-      setStatus({ type: 'error', msg: 'Invalid signature detected. Restoration aborted.' });
+      setStatus({ type: 'error', msg: 'Invalid or malformed data. Restoration aborted.' });
     }
   };
 
@@ -56,14 +56,14 @@ export const SyncModule: React.FC = () => {
             <ShieldCheck className="w-7 h-7" />
           </div>
           <div>
-            <h2 className="font-display text-xl font-bold">Encrypted Local Vault</h2>
+            <h2 className="font-display text-xl font-bold">Local Data Vault</h2>
             <p className="text-[10px] text-[#C59D5F] font-bold uppercase tracking-widest">Security Layer</p>
           </div>
         </div>
         
         <p className="text-slate-400 mb-10 leading-relaxed text-sm font-medium">
-          Since FinSight prioritizes <span className="text-[#4AA3A3] font-bold">Local-First</span> intelligence, your data never leaves this environment. 
-          Use this hub to manually sync or migrate your encrypted financial blueprints.
+          Since FinSight prioritizes <span className="text-[#4AA3A3] font-bold">Local-First</span> intelligence, your data stays in this browser's local storage.
+          Use this hub to manually export or migrate your financial data. Note: exports are plain JSON and are not encrypted — store backups securely.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
