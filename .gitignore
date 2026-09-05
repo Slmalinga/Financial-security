@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Design canvas seeded output (large editor payload; regenerated from source)
+design-assets/**/finsight-*.html
