@@ -51,6 +51,35 @@ Start building better money habits today with FinSight.
 
 ---
 
+## Feature-graphic tagline (1024 × 500 banner)
+
+**Primary (recommended)**
+> Master your money with the 50/30/20 rule
+> _Private, local-first budgeting with AI insights_
+
+Alternatives:
+- **Punchy / benefit-led**
+  > Budget smarter. Spend with confidence.
+  > _AI-powered insights, 100% on your device_
+- **Privacy-forward**
+  > Your finances. Your device. Your rules.
+  > _Local-first budgeting with the 50/30/20 rule_
+- **Minimal (single line)**
+  > Smart, private budgeting — powered by AI
+- **Feature-focused**
+  > Track. Plan. Save.
+  > _The 50/30/20 budget app with AI insights_
+
+Banner design notes:
+- Logo/mark on one side, tagline on the other — keep text within the middle
+  ~80% (Google crops the banner for different layouts).
+- Brand palette: navy `#1E2B58` background, teal `#4AA3A3` accent, gold
+  `#C59D5F` highlight word.
+- One headline + one subline max; banners are glanced at, not read.
+- Don't repeat the app name large if the logo already shows it.
+
+---
+
 ## Listing notes
 
 - The Gemini AI data processing is disclosed in the description on purpose —
