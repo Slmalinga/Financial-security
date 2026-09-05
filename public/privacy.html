@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FinSight — Privacy Policy</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      max-width: 760px; margin: 0 auto; padding: 2.5rem 1.25rem 5rem;
+      line-height: 1.65; color: #1a1a1a; background: #fff;
+    }
+    @media (prefers-color-scheme: dark) {
+      body { color: #e6e6e6; background: #121212; }
+      a { color: #4AA3A3; }
+      code { background: #1e1e1e; }
+    }
+    h1 { font-size: 1.9rem; margin-bottom: .25rem; }
+    h2 { font-size: 1.2rem; margin-top: 2rem; border-bottom: 1px solid #8883; padding-bottom: .3rem; }
+    .meta { color: #888; font-size: .9rem; margin-bottom: 2rem; }
+    code { background: #f2f2f2; padding: .1rem .35rem; border-radius: 4px; font-size: .9em; }
+    ul { padding-left: 1.3rem; }
+    a { color: #1E2B58; }
+  </style>
+</head>
+<body>
+  <h1>Privacy Policy for FinSight</h1>
+  <p class="meta">Last updated: 5 September 2026</p>
+
+  <p>
+    FinSight ("the app", "we", "us") is a personal finance and budgeting tool
+    that follows a <strong>local-first</strong> design. This policy explains
+    what information the app handles and how. By using FinSight you agree to
+    the practices described here.
+  </p>
+
+  <h2>1. Information you enter</h2>
+  <p>
+    FinSight lets you record financial information such as transactions,
+    amounts, descriptions, categories, monthly income, and budget allocations.
+  </p>
+  <ul>
+    <li>
+      <strong>This data is stored only on your own device</strong>, in your
+      browser's local storage. We do not operate accounts, and we do not
+      upload, sync, or back up your financial records to any server we control.
+    </li>
+    <li>
+      You can export your data (as a plain-text JSON file) or permanently
+      erase all of it at any time using the in-app <em>Purge</em> feature.
+    </li>
+  </ul>
+
+  <h2>2. AI insights and third-party processing</h2>
+  <p>
+    When you use the optional AI insights feature, FinSight sends a summary of
+    your spending — including recent transaction descriptions and amounts,
+    your income figure, and category totals — to Google's Gemini API in order
+    to generate budgeting suggestions.
+  </p>
+  <ul>
+    <li>This request is made through our own secure endpoint (<code>/api/advice</code>); your Google/Gemini API key is never exposed to other users.</li>
+    <li>The data is processed by Google under their own terms. See Google's privacy policy at <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a> and the Gemini API terms at <a href="https://ai.google.dev/gemini-api/terms">https://ai.google.dev/gemini-api/terms</a>.</li>
+    <li>We do not store the content of these AI requests on our servers.</li>
+    <li>If you do not use the AI insights feature, none of your financial data leaves your device.</li>
+  </ul>
+
+  <h2>3. Information we do NOT collect</h2>
+  <ul>
+    <li>No user accounts, names, email addresses, or passwords.</li>
+    <li>No advertising identifiers, and no third-party advertising or analytics SDKs.</li>
+    <li>No location data.</li>
+    <li>No device contacts, photos, or files.</li>
+  </ul>
+
+  <h2>4. Data security</h2>
+  <p>
+    Because data is stored locally in your browser, its security depends on the
+    security of your device. Note that local data and exported backup files are
+    <strong>not encrypted</strong>. Keep any exported backup files somewhere
+    safe, and use your device's own lock screen and security features.
+  </p>
+
+  <h2>5. Data retention and deletion</h2>
+  <p>
+    Your data remains on your device until you delete it. You can remove all
+    data instantly with the in-app Purge feature, or by clearing the app's
+    storage / uninstalling the app. Since we do not hold your data on a server,
+    there is nothing for us to retain or delete on your behalf.
+  </p>
+
+  <h2>6. Children's privacy</h2>
+  <p>
+    FinSight is not directed to children under 13 and does not knowingly
+    collect information from them.
+  </p>
+
+  <h2>7. Changes to this policy</h2>
+  <p>
+    We may update this policy from time to time. Material changes will be
+    reflected by updating the "Last updated" date above.
+  </p>
+
+  <h2>8. Contact</h2>
+  <p>
+    For questions about this policy, contact the developer at
+    <a href="mailto:REPLACE_WITH_YOUR_CONTACT_EMAIL">REPLACE_WITH_YOUR_CONTACT_EMAIL</a>.
+  </p>
+</body>
+</html>
