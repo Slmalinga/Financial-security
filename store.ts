@@ -1,7 +1,7 @@
 
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { AppState, Transaction, BudgetAllocation, BudgetItem } from './types';
+import { AppState, Transaction, BudgetAllocation, BudgetItem, CategoryType } from './types';
 
 const defaultCategories = {
   Need: ['Rent', 'Groceries', 'Utilities', 'Transport', 'Insurance'],
@@ -48,17 +48,41 @@ export const useStore = create<AppState>()(
       importData: (dataStr) => {
         try {
           const parsed = JSON.parse(dataStr);
-          if (Array.isArray(parsed.transactions)) {
-            set({ 
-              transactions: parsed.transactions, 
-              plannedItems: parsed.plannedItems || [],
-              customCategories: parsed.customCategories || defaultCategories,
-              monthlyIncome: parsed.monthlyIncome || 5000,
-              budgetAllocation: parsed.budgetAllocation || { needs: 50, wants: 30, savings: 20 }
-            });
-            return true;
-          }
-          return false;
+          if (!Array.isArray(parsed.transactions)) return false;
+
+          const validTypes: CategoryType[] = ['Need', 'Want', 'Saving', 'Income'];
+          const isValidTransaction = (t: unknown): t is Transaction =>
+            !!t && typeof t === 'object' &&
+            typeof (t as Transaction).id === 'string' &&
+            typeof (t as Transaction).description === 'string' &&
+            typeof (t as Transaction).amount === 'number' && Number.isFinite((t as Transaction).amount) &&
+            validTypes.includes((t as Transaction).type);
+
+          if (!parsed.transactions.every(isValidTransaction)) return false;
+
+          const isValidPlannedItem = (i: unknown): i is BudgetItem =>
+            !!i && typeof i === 'object' &&
+            typeof (i as BudgetItem).id === 'string' &&
+            typeof (i as BudgetItem).description === 'string' &&
+            typeof (i as BudgetItem).amount === 'number' && Number.isFinite((i as BudgetItem).amount) &&
+            ['Need', 'Want', 'Saving'].includes((i as BudgetItem).type);
+
+          const plannedItems = Array.isArray(parsed.plannedItems) && parsed.plannedItems.every(isValidPlannedItem)
+            ? parsed.plannedItems
+            : [];
+
+          const income = typeof parsed.monthlyIncome === 'number' && Number.isFinite(parsed.monthlyIncome)
+            ? parsed.monthlyIncome
+            : 5000;
+
+          set({
+            transactions: parsed.transactions,
+            plannedItems,
+            customCategories: parsed.customCategories || defaultCategories,
+            monthlyIncome: income,
+            budgetAllocation: parsed.budgetAllocation || { needs: 50, wants: 30, savings: 20 }
+          });
+          return true;
         } catch (e) {
           return false;
         }

@@ -60,11 +60,14 @@ export const BudgetPlanner: React.FC = () => {
   const handleAddPlannedItem = (e: React.FormEvent) => {
     e.preventDefault();
     if (!newItemDesc || !newItemAmount || !newItemType) return;
-    
+
+    const parsedAmount = parseFloat(newItemAmount);
+    if (!Number.isFinite(parsedAmount)) return;
+
     addPlannedItem({
       id: crypto.randomUUID(),
       description: newItemDesc,
-      amount: parseFloat(newItemAmount),
+      amount: parsedAmount,
       type: newItemType
     });
     
@@ -217,7 +220,7 @@ export const BudgetPlanner: React.FC = () => {
             <input
               type="number"
               value={monthlyIncome}
-              onChange={(e) => setMonthlyIncome(Number(e.target.value))}
+              onChange={(e) => setMonthlyIncome(Number(e.target.value) || 0)}
               className="w-full md:w-96 bg-black/20 border border-white/10 p-8 pl-16 rounded-xl text-5xl font-bold focus:border-[#4AA3A3] outline-none transition-all text-right pr-10 text-white font-mono shadow-inner"
             />
           </div>

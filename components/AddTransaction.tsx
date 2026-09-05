@@ -14,10 +14,13 @@ export const AddTransaction: React.FC<{ onComplete?: () => void }> = ({ onComple
     e.preventDefault();
     if (!description || !amount) return;
 
+    const parsedAmount = parseFloat(amount);
+    if (!Number.isFinite(parsedAmount)) return;
+
     addTransaction({
       id: crypto.randomUUID(),
       date: new Date().toISOString(),
-      amount: parseFloat(amount),
+      amount: parsedAmount,
       description,
       category: category || 'General',
       type

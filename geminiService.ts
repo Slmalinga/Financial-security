@@ -1,42 +1,24 @@
-import { GoogleGenAI } from "@google/genai";
 import { Transaction } from "./types";
 
-// Always initialize GoogleGenAI exclusively with process.env.API_KEY as per the world-class guidelines.
+// The Gemini API key is NOT used here. It is held server-side in the Vercel
+// serverless function at /api/advice (env var GEMINI_API_KEY) so it never
+// reaches the browser. This client only calls our own endpoint.
 export const getFinancialAdvice = async (transactions: Transaction[], income: number) => {
-  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-  
-  const summary = transactions.reduce((acc, t) => {
-    if (t.type !== 'Income') {
-      acc[t.type] = (acc[t.type] || 0) + t.amount;
-    }
-    return acc;
-  }, {} as Record<string, number>);
-
-  const prompt = `
-    Analyze my monthly financial health based on the 50/30/20 rule.
-    Monthly Income: $${income}
-    Spending:
-    - Needs: $${summary.Need || 0}
-    - Wants: $${summary.Want || 0}
-    - Savings: $${summary.Saving || 0}
-    
-    Recent Transactions: ${transactions.slice(0, 5).map(t => `${t.description}: $${t.amount}`).join(', ')}
-    
-    Provide a concise, encouraging, and actionable financial insight in 3-4 sentences.
-  `;
-
   try {
-    const response = await ai.models.generateContent({
-      model: "gemini-3-flash-preview",
-      contents: prompt,
-      config: {
-        temperature: 0.7,
-      },
+    const response = await fetch("/api/advice", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ transactions, income }),
     });
-    // Correctly using the .text property as per GenerateContentResponse definition.
-    return response.text || "Unable to generate insights at this time.";
+
+    if (!response.ok) {
+      return "The AI financial advisor is currently offline. Please try again later.";
+    }
+
+    const data = await response.json();
+    return data.advice || "Unable to generate insights at this time.";
   } catch (error) {
-    console.error("Gemini Error:", error);
+    console.error("Advice request failed:", error);
     return "The AI financial advisor is currently offline. Check your connection.";
   }
 };

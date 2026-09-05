@@ -32,7 +32,7 @@ export const Layout: React.FC<LayoutProps> = ({ children, activeTab, setActiveTa
             <h1 className="font-display font-bold text-2xl tracking-tight text-white">
               FinS<span className="text-[#4AA3A3]">1</span>ght
             </h1>
-            <p className="text-[10px] text-[#C59D5F] font-bold uppercase tracking-[0.2em] -mt-1">Brand Strategy 1.0</p>
+            <p className="text-[10px] text-[#C59D5F] font-bold uppercase tracking-[0.2em] -mt-1">Brand Strategy 2.0</p>
           </div>
         </div>
 
